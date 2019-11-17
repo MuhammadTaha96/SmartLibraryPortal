@@ -17,14 +17,14 @@ namespace SmartLibraryPortal
             InitializeComponent();
             SidePanel.Height = btnBook.Height;
             SidePanel.Top = btnBook.Top;
-            bookUserControl1.BringToFront();
+        //    uc_Books1.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SidePanel.Height = btnBook.Height;
             SidePanel.Top = btnBook.Top;
-            bookUserControl1.BringToFront();
+        //    uc_Books1.BringToFront();
         }
 
         private void btnStudent_Click(object sender, EventArgs e)
@@ -33,5 +33,19 @@ namespace SmartLibraryPortal
             SidePanel.Top = btnStudent.Top;
             studentUserControl1.BringToFront();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
+
+        private void studentUserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }
