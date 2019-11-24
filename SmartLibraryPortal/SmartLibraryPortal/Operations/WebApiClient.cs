@@ -40,11 +40,66 @@ namespace SmartLibraryPortal.Operations
 
         public static List<Book> GetAllBooks()
         {
+            try
+            {
+                string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+                string controller = "values";
+                string action = "GetAllBooks";
+                string html = string.Empty;
+                List<Book> books = null;
+
+                string url = urlWebConfig + "/" + controller + "/" + action;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.AutomaticDecompression = DecompressionMethods.GZip;
+
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    html = reader.ReadToEnd();
+                    books = JsonConvert.DeserializeObject<List<Book>>(html);
+                }
+
+                return books;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static List<UserLogin> GetUsers(string userType="all")
+        {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
             string controller = "values";
-            string action = "GetAllBooks";
+            string action = "GetUsers";
             string html = string.Empty;
-            List<Book> books = null;
+            List<UserLogin> students = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?userType=" + userType;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                students = JsonConvert.DeserializeObject<List<UserLogin>>(html);
+            }
+
+            return students;
+        }
+
+        public static List<Reservation> GetReservations()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetReservations";
+            string html = string.Empty;
+            List<Reservation> reservations = null;
 
             string url = urlWebConfig + "/" + controller + "/" + action;
 
@@ -56,10 +111,10 @@ namespace SmartLibraryPortal.Operations
             using (StreamReader reader = new StreamReader(stream))
             {
                 html = reader.ReadToEnd();
-                books = JsonConvert.DeserializeObject<List<Book>>(html);
+                reservations = JsonConvert.DeserializeObject<List<Reservation>>(html);
             }
 
-            return books;
+            return reservations;
         }
 
         public static List<Category> GetCategories()
@@ -137,6 +192,31 @@ namespace SmartLibraryPortal.Operations
             return authorList;
         }
 
+        public static List<UserType> GetUserTypes()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetUserTypes";
+            bool valid = false;
+            string html = string.Empty;
+            List<UserType> usereTypeList = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                usereTypeList = JsonConvert.DeserializeObject<List<UserType>>(html);
+            }
+
+            return usereTypeList;
+        }
+
         public static Book GetBookDetails(int bookId)
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
@@ -162,8 +242,55 @@ namespace SmartLibraryPortal.Operations
             return book;
         }
 
-        
+        public static bool UserNameAvailability(string username)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "UserNameAvailability";
+            bool isSuccess = false;
+            string html = string.Empty;
+            Book book = null;
 
+            string url = urlWebConfig + "/" + controller + "/" + action + "?username=" + username;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                isSuccess = bool.Parse(html);
+            }
+
+            return isSuccess;
+        }
+
+        public static bool BookNameAvailability(string bookTitle)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "BookNameAvailability";
+            bool isSuccess = false;
+            string html = string.Empty;
+            Book book = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?bookTitle=" + bookTitle;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                isSuccess = bool.Parse(html);
+            }
+
+            return isSuccess;
+        }
 
         public static bool AddBook(Book book)
         {
@@ -200,6 +327,193 @@ namespace SmartLibraryPortal.Operations
 
             return isSuccess;
 
+        }
+
+        public static bool AddUser(UserLogin user)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "AddUser";
+            string html = string.Empty;
+            bool isSuccess = false;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+            string response = string.Empty;
+            var httpWebRequest = (System.Net.HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(user);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                result = result.ToString();
+                response = result;
+                isSuccess = bool.Parse(response);
+            }
+
+            return isSuccess;
+
+        }
+
+
+        public static bool UpdateBook(Book book)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "UpdateBook";
+            string html = string.Empty;
+            bool isSuccess = false;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+            string response = string.Empty;
+            var httpWebRequest = (System.Net.HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(book);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                result = result.ToString();
+                response = result;
+                isSuccess = bool.Parse(response);
+            }
+
+            return isSuccess;
+
+        }
+
+        public static bool UpdateUser(UserLogin user)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "UpdateUser";
+            string html = string.Empty;
+            bool isSuccess = false;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+            string response = string.Empty;
+            var httpWebRequest = (System.Net.HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(user);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                result = result.ToString();
+                response = result;
+                isSuccess = bool.Parse(response);
+            }
+
+            return isSuccess;
+
+        }
+
+        public static bool DeleteBook(int bookId)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "DeleteBook";
+            bool valid = false;
+            string html = string.Empty;
+            bool success; 
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?bookId=" + bookId;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                success = bool.Parse(html);
+            }
+
+            return success;
+        }
+
+        public static bool CancleReservation(int reservationId, int copyId)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "CancleReservation";
+            bool valid = false;
+            string html = string.Empty;
+            bool success;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?reservationId=" + reservationId + "&copyId=" + copyId;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                success = bool.Parse(html);
+            }
+
+            return success;
+        }
+
+        public static bool DeleteUser(int userId)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "DeleteUser";
+            bool valid = false;
+            string html = string.Empty;
+            bool success;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?userId=" + userId;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                success = bool.Parse(html);
+            }
+
+            return success;
         }
 
         public static bool AddAuthor(Author author)

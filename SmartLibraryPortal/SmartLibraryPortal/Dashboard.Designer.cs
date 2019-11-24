@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnBooks = new System.Windows.Forms.Button();
-            this.btnStudents = new System.Windows.Forms.Button();
             this.btnReservations = new System.Windows.Forms.Button();
+            this.btnStudents = new System.Windows.Forms.Button();
+            this.btnBooks = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,18 +45,18 @@
             this.panel3.Size = new System.Drawing.Size(200, 566);
             this.panel3.TabIndex = 0;
             // 
-            // btnBooks
+            // btnReservations
             // 
-            this.btnBooks.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBooks.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBooks.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBooks.Location = new System.Drawing.Point(0, 110);
-            this.btnBooks.Name = "btnBooks";
-            this.btnBooks.Size = new System.Drawing.Size(200, 54);
-            this.btnBooks.TabIndex = 0;
-            this.btnBooks.Text = "BOOKS";
-            this.btnBooks.UseVisualStyleBackColor = false;
+            this.btnReservations.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnReservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReservations.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReservations.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReservations.Location = new System.Drawing.Point(0, 212);
+            this.btnReservations.Name = "btnReservations";
+            this.btnReservations.Size = new System.Drawing.Size(200, 54);
+            this.btnReservations.TabIndex = 2;
+            this.btnReservations.Text = "RESERVATIONS";
+            this.btnReservations.UseVisualStyleBackColor = false;
             // 
             // btnStudents
             // 
@@ -71,18 +71,19 @@
             this.btnStudents.Text = "STUDENTS";
             this.btnStudents.UseVisualStyleBackColor = false;
             // 
-            // btnReservations
+            // btnBooks
             // 
-            this.btnReservations.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnReservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReservations.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReservations.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReservations.Location = new System.Drawing.Point(0, 212);
-            this.btnReservations.Name = "btnReservations";
-            this.btnReservations.Size = new System.Drawing.Size(200, 54);
-            this.btnReservations.TabIndex = 2;
-            this.btnReservations.Text = "RESERVATIONS";
-            this.btnReservations.UseVisualStyleBackColor = false;
+            this.btnBooks.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBooks.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBooks.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBooks.Location = new System.Drawing.Point(0, 110);
+            this.btnBooks.Name = "btnBooks";
+            this.btnBooks.Size = new System.Drawing.Size(200, 54);
+            this.btnBooks.TabIndex = 0;
+            this.btnBooks.Text = "BOOKS";
+            this.btnBooks.UseVisualStyleBackColor = false;
+            this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
             // 
             // Dashboard
             // 

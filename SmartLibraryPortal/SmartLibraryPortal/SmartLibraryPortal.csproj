@@ -64,6 +64,12 @@
     <Compile Include="AddCopy.Designer.cs">
       <DependentUpon>AddCopy.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="bookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,17 +106,32 @@
     <Compile Include="StudentUserControl.Designer.cs">
       <DependentUpon>StudentUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="uc_Reservation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_Reservation.Designer.cs">
+      <DependentUpon>uc_Reservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateBook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdateBook.Designer.cs">
       <DependentUpon>UpdateBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddBook.resx">
       <DependentUpon>AddBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddCopy.resx">
       <DependentUpon>AddCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bookControl.resx">
       <DependentUpon>bookControl.cs</DependentUpon>
@@ -137,8 +158,14 @@
     <EmbeddedResource Include="StudentUserControl.resx">
       <DependentUpon>StudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uc_Reservation.resx">
+      <DependentUpon>uc_Reservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateBook.resx">
       <DependentUpon>UpdateBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -162,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BookBackgroundImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookwallpaper.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

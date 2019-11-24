@@ -15,18 +15,32 @@ namespace SmartLibraryPortal
         public Portal()
         {
             InitializeComponent();
-            sidePanel.Height = btnBooks.Height;
-            sidePanel.Top = btnBooks.Top;
-             //.BringToFront();
+            bookControl1.BringToFront();
             WindowState = FormWindowState.Maximized;
         }
 
         private void btnBooks_Click(object sender, EventArgs e)
         {
-
+            bookControl1.BringToFront();
+            WindowState = FormWindowState.Maximized;
         }
 
         private void Portal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStudents_Click(object sender, EventArgs e)
+        {
+            studentUserControl1.BringToFront();
+        }
+
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+            uc_Reservation1.BringToFront();
+        }
+
+        private void uc_Reservation1_Load(object sender, EventArgs e)
         {
 
         }
