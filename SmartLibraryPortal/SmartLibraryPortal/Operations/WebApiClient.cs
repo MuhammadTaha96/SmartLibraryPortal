@@ -292,6 +292,31 @@ namespace SmartLibraryPortal.Operations
             return isSuccess;
         }
 
+        public static UserLogin AuthenticateStudentRFID(string rfid)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "AuthenticateStudentRFID";
+            bool isSuccess = false;
+            string html = string.Empty;
+            UserLogin user = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?rfid=" + rfid;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                user = JsonConvert.DeserializeObject<UserLogin>(html);
+            }
+
+            return user;
+        }
+
         public static bool AddBook(Book book)
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
@@ -365,7 +390,6 @@ namespace SmartLibraryPortal.Operations
             return isSuccess;
 
         }
-
 
         public static bool UpdateBook(Book book)
         {
@@ -686,6 +710,32 @@ namespace SmartLibraryPortal.Operations
             }
 
             return isSuccess;
+        }
+
+
+        public static TransactionResponse CheckInCheckOut(string UserRFID, string CopyRFID)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "CheckInCheckOut";
+            bool isSuccess = false;
+            string html = string.Empty;
+            TransactionResponse Tresponse = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?UserRFID=" + UserRFID + "&CopyRFID=" + CopyRFID;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                Tresponse = JsonConvert.DeserializeObject<TransactionResponse>(html);
+            }
+
+            return Tresponse;
         }
 
         

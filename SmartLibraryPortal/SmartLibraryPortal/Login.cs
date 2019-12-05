@@ -32,5 +32,24 @@ namespace SmartLibraryPortal
             else
                 MessageBox.Show("The username and password are wrong");
         }
+
+        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtUsername.TextLength != 10)
+                return;
+
+            else
+                txtPassword.Focus(); 
+
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtPassword.TextLength != 10)
+                return;
+
+            else
+                MessageBox.Show("BOOK RFID: " + txtUsername.Text + ". Student RFID " + txtPassword.Text);
+        }
     }
 }

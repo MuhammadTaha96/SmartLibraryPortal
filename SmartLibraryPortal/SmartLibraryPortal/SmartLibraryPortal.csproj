@@ -77,6 +77,18 @@
       <DependentUpon>bookControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckedListBoxItem.cs" />
+    <Compile Include="CheckIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckIn.Designer.cs">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -135,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="bookControl.resx">
       <DependentUpon>bookControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckIn.resx">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
