@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +44,9 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.errorProviderUser = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUser)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -115,6 +119,7 @@
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(200, 20);
             this.txtFullName.TabIndex = 7;
+            this.txtFullName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFullName_Validating);
             // 
             // txtUsername
             // 
@@ -122,13 +127,16 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(200, 20);
             this.txtUsername.TabIndex = 8;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(160, 176);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(200, 20);
             this.txtPassword.TabIndex = 9;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // txtPhoneNumber
             // 
@@ -136,6 +144,8 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(200, 20);
             this.txtPhoneNumber.TabIndex = 10;
+            this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumber_KeyPress);
+            this.txtPhoneNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhoneNumber_Validating);
             // 
             // txtRFID
             // 
@@ -143,6 +153,7 @@
             this.txtRFID.Name = "txtRFID";
             this.txtRFID.Size = new System.Drawing.Size(200, 20);
             this.txtRFID.TabIndex = 11;
+            this.txtRFID.Validating += new System.ComponentModel.CancelEventHandler(this.txtRFID_Validating);
             // 
             // btnAddUser
             // 
@@ -160,6 +171,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
             this.txtEmail.TabIndex = 14;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label7
             // 
@@ -170,11 +182,26 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Email";
             // 
+            // errorProviderUser
+            // 
+            this.errorProviderUser.ContainerControl = this;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(38, 360);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(103, 36);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 408);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAddUser);
@@ -194,6 +221,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddUser";
             this.Load += new System.EventHandler(this.AddUser_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +244,7 @@
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ErrorProvider errorProviderUser;
+        private System.Windows.Forms.Button btnClose;
     }
 }

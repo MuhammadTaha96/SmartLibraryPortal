@@ -27,25 +27,29 @@ namespace SmartLibraryPortal
 
         private void btnAddCopy_Click(object sender, EventArgs e)
         {
-            Copy copy = new Copy();
-            
-            copy.RFID = txtRFID.Text;
-
-            copy.Status = new Status();
-            copy.Status.Name = "Available";
-
-            copy.Book = new Book();
-            copy.Book.BookId = int.Parse((cbBookTitle.SelectedItem as ComboBoxItem).Value.ToString());
-
-            copy.Location = new Location()
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Shelf = (int) numShelve.Value,
-                ShelfRow = (int) numRow.Value,
-                ShelfCol = (int) numCol.Value 
-            };
 
-            if(WebApiClient.AddCopy(copy))
-                MessageBox.Show("Copy has been added.");
+                Copy copy = new Copy();
+
+                copy.RFID = txtRFID.Text;
+
+                copy.Status = new Status();
+                copy.Status.Name = "Available";
+
+                copy.Book = new Book();
+                copy.Book.BookId = int.Parse((cbBookTitle.SelectedItem as ComboBoxItem).Value.ToString());
+
+                copy.Location = new Location()
+                {
+                    Shelf = (int)numShelve.Value,
+                    ShelfRow = (int)numRow.Value,
+                    ShelfCol = (int)numCol.Value
+                };
+
+                if (WebApiClient.AddCopy(copy))
+                    MessageBox.Show("Copy has been added.");
+            }
         }
 
         public void BindBookCombo(ComboBox cb)
@@ -89,6 +93,71 @@ namespace SmartLibraryPortal
         private void cbShelve_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRFID_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtRFID.Text))
+            {
+                e.Cancel = true;
+                txtRFID.Focus();
+                errorProviderCopy.SetError(txtRFID, "Please read a RFID card from RF Reader");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCopy.SetError(txtRFID, "");
+            }
+        }
+
+        private void numShelve_Validating(object sender, CancelEventArgs e)
+        {
+            if (numShelve.Value.Equals(0))
+            {
+                e.Cancel = true;
+                numShelve.Focus();
+                errorProviderCopy.SetError(numShelve, "Shelve value cannot be 0");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCopy.SetError(numShelve, "");
+            }
+        }
+
+        private void numRow_Validating(object sender, CancelEventArgs e)
+        {
+            if (numRow.Value.Equals(0))
+            {
+                e.Cancel = true;
+                numRow.Focus();
+                errorProviderCopy.SetError(numRow, "Row value cannot be 0");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCopy.SetError(numRow, "");
+            }
+        }
+
+        private void numCol_Validating(object sender, CancelEventArgs e)
+        {
+            if (numCol.Value.Equals(0))
+            {
+                e.Cancel = true;
+                numCol.Focus();
+                errorProviderCopy.SetError(numCol, "Column value cannot be 0");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCopy.SetError(numCol, "");
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

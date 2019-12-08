@@ -56,11 +56,10 @@ namespace SmartLibraryPortal
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnReservations = new System.Windows.Forms.Button();
             this.btnStudents = new System.Windows.Forms.Button();
             this.btnBooks = new System.Windows.Forms.Button();
-            this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
             this.uctrl_CheckIn = new SmartLibraryPortal.CheckIn();
             this.uctrl_Books = new SmartLibraryPortal.bookControl();
             this.uctrl_Users = new SmartLibraryPortal.StudentUserControl();
@@ -71,7 +70,6 @@ namespace SmartLibraryPortal
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnCheckOut);
             this.panel3.Controls.Add(this.btnCheckIn);
             this.panel3.Controls.Add(this.btnReservations);
             this.panel3.Controls.Add(this.btnStudents);
@@ -80,6 +78,20 @@ namespace SmartLibraryPortal
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 566);
             this.panel3.TabIndex = 1;
+            // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckIn.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCheckIn.Location = new System.Drawing.Point(0, 256);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(200, 54);
+            this.btnCheckIn.TabIndex = 3;
+            this.btnCheckIn.Text = "CHECK IN";
+            this.btnCheckIn.UseVisualStyleBackColor = false;
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // btnReservations
             // 
@@ -105,7 +117,7 @@ namespace SmartLibraryPortal
             this.btnStudents.Name = "btnStudents";
             this.btnStudents.Size = new System.Drawing.Size(200, 54);
             this.btnStudents.TabIndex = 1;
-            this.btnStudents.Text = "STUDENTS";
+            this.btnStudents.Text = "USERS";
             this.btnStudents.UseVisualStyleBackColor = false;
             this.btnStudents.Click += new System.EventHandler(this.btnStudents_Click_1);
             // 
@@ -122,34 +134,6 @@ namespace SmartLibraryPortal
             this.btnBooks.Text = "BOOKS";
             this.btnBooks.UseVisualStyleBackColor = false;
             this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click_1);
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckIn.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCheckIn.Location = new System.Drawing.Point(0, 256);
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(200, 54);
-            this.btnCheckIn.TabIndex = 3;
-            this.btnCheckIn.Text = "CHECK IN";
-            this.btnCheckIn.UseVisualStyleBackColor = false;
-            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
-            // 
-            // btnCheckOut
-            // 
-            this.btnCheckOut.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckOut.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCheckOut.Location = new System.Drawing.Point(0, 307);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(200, 54);
-            this.btnCheckOut.TabIndex = 4;
-            this.btnCheckOut.Text = "CHECK OUT";
-            this.btnCheckOut.UseVisualStyleBackColor = false;
-            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // uctrl_CheckIn
             // 
