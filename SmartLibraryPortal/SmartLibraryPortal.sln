@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLibraryPortal", "Smart
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessModels", "..\..\API\Models\BusinessModels.csproj", "{059BC315-B071-45EE-BAF8-2B7D3D609254}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{BE1FF8E6-C9E7-43F7-8F20-4E36C3D31555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{059BC315-B071-45EE-BAF8-2B7D3D609254}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059BC315-B071-45EE-BAF8-2B7D3D609254}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059BC315-B071-45EE-BAF8-2B7D3D609254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1FF8E6-C9E7-43F7-8F20-4E36C3D31555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1FF8E6-C9E7-43F7-8F20-4E36C3D31555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1FF8E6-C9E7-43F7-8F20-4E36C3D31555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1FF8E6-C9E7-43F7-8F20-4E36C3D31555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

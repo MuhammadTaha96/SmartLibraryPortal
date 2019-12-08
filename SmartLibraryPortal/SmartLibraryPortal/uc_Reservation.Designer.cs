@@ -35,6 +35,7 @@
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.dgReservations = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgReservations)).BeginInit();
             this.SuspendLayout();
@@ -109,11 +110,25 @@
             this.dgReservations.TabIndex = 15;
             this.dgReservations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgReservations_CellClick);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRefresh.Location = new System.Drawing.Point(762, 48);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(67, 33);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // uc_Reservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgReservations);
             this.Name = "uc_Reservation";
@@ -133,5 +148,6 @@
         private System.Windows.Forms.Label lblPageCount;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.DataGridView dgReservations;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
