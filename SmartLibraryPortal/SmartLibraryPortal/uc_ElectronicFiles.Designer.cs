@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -44,8 +45,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorEfile = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgElectronicFiles)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEfile)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNext
@@ -99,8 +102,8 @@
             // 
             // dgElectronicFiles
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgElectronicFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgElectronicFiles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgElectronicFiles.BackgroundColor = System.Drawing.Color.LightYellow;
@@ -109,11 +112,11 @@
             this.dgElectronicFiles.GridColor = System.Drawing.Color.Black;
             this.dgElectronicFiles.Location = new System.Drawing.Point(343, 85);
             this.dgElectronicFiles.Name = "dgElectronicFiles";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightYellow;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightYellow;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgElectronicFiles.RowTemplate.Height = 40;
             this.dgElectronicFiles.Size = new System.Drawing.Size(486, 255);
             this.dgElectronicFiles.TabIndex = 23;
@@ -161,6 +164,7 @@
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(178, 20);
             this.txtPath.TabIndex = 5;
+            this.txtPath.Validating += new System.ComponentModel.CancelEventHandler(this.txtPath_Validating);
             // 
             // cbCategory
             // 
@@ -178,6 +182,7 @@
             this.txtFileName.Name = "txtFileName";
             this.txtFileName.Size = new System.Drawing.Size(178, 20);
             this.txtFileName.TabIndex = 3;
+            this.txtFileName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFileName_Validating);
             // 
             // label3
             // 
@@ -205,6 +210,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // errorEfile
+            // 
+            this.errorEfile.ContainerControl = this;
+            // 
             // uc_ElectronicFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +231,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgElectronicFiles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +253,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorEfile;
     }
 }

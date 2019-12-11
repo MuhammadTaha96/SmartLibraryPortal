@@ -405,7 +405,7 @@ namespace SmartLibraryPortal.Operations
             return isSuccess;
         }
 
-        public static bool EFileNameAvailability(string bookTitle)
+        public static bool EFileNameAvailability(string eFileName)
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
             string controller = "values";
@@ -414,7 +414,7 @@ namespace SmartLibraryPortal.Operations
             string html = string.Empty;
             Book book = null;
 
-            string url = urlWebConfig + "/" + controller + "/" + action + "?bookTitle=" + bookTitle;
+            string url = urlWebConfig + "/" + controller + "/" + action + "?eFileName=" + eFileName;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip;
