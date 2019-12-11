@@ -1,4 +1,5 @@
 ﻿using Models;
+using PagedList;
 using SmartLibraryPortal.Operations;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace SmartLibraryPortal
 {
     public partial class AddCopy : Form
     {
+
+        int pageNumber = 1;
+        IPagedList<Location> list;
+
         public AddCopy()
         {
             InitializeComponent();
@@ -22,33 +27,97 @@ namespace SmartLibraryPortal
         private void AddCopy_Load(object sender, EventArgs e)
         {
             BindBookCombo(cbBookTitle);
-          //  BindLocationCombos();
+
+            if (!this.DesignMode)
+            {
+                list = GetPagedListAsync();
+
+                btnPrevious.Enabled = list.HasPreviousPage;
+                btnNext.Enabled = list.HasNextPage;
+                dgCopyLocation.DataSource = list.Select(o => new { Shelve = o.Shelf, Row = o.ShelfRow, Column = o.ShelfCol }).ToList();
+                lblPageCount.Text = string.Format("Page {0}/{1}", pageNumber, list.PageCount);
+            }
+        }
+
+        public IPagedList<Location> GetPagedListAsync(int pageNumber = 1, int pageSize = 10, string usertype = "student")
+        {
+            return WebApiClient.GetAvailableLocation().ToPagedList(pageNumber, pageSize);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
+                if (list.HasPreviousPage)
+                {
+                    list = GetPagedListAsync(--pageNumber);
+                    btnPrevious.Enabled = list.HasPreviousPage;
+                    btnNext.Enabled = list.HasNextPage;
+                    dgCopyLocation.DataSource = list.Select(o => new { Shelve = o.Shelf, Row = o.ShelfRow, Column = o.ShelfCol }).ToList();
+                    lblPageCount.Text = string.Format("Page {0}/{1}", pageNumber, list.PageCount);
+                }
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
+                if (list.HasNextPage)
+                {
+                    list = GetPagedListAsync(++pageNumber);
+                    btnPrevious.Enabled = list.HasPreviousPage;
+                    btnNext.Enabled = list.HasNextPage;
+                    dgCopyLocation.DataSource = list.Select(o => new { Shelve = o.Shelf, Row = o.ShelfRow, Column = o.ShelfCol }).ToList();
+                    lblPageCount.Text = string.Format("Page {0}/{1}", pageNumber, list.PageCount);
+                }
+            }
         }
 
         private void btnAddCopy_Click(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
+                List<Location> availableLocation = WebApiClient.GetAvailableLocation();
 
-                Copy copy = new Copy();
-
-                copy.RFID = txtRFID.Text;
-
-                copy.Status = new Status();
-                copy.Status.Name = "Available";
-
-                copy.Book = new Book();
-                copy.Book.BookId = int.Parse((cbBookTitle.SelectedItem as ComboBoxItem).Value.ToString());
-
-                copy.Location = new Location()
+                if (availableLocation.Where(x => x.Shelf.Equals((int)numShelve.Value) && x.ShelfCol.Equals((int)numCol.Value) && x.ShelfRow.Equals((int)numRow.Value)).SingleOrDefault() != null)
                 {
-                    Shelf = (int)numShelve.Value,
-                    ShelfRow = (int)numRow.Value,
-                    ShelfCol = (int)numCol.Value
-                };
+                    Copy copy = new Copy();
 
-                if (WebApiClient.AddCopy(copy))
-                    MessageBox.Show("Copy has been added.");
+                    copy.RFID = txtRFID.Text;
+
+                    copy.Status = new Status();
+                    copy.Status.Name = "Available";
+
+                    copy.Book = new Book();
+                    copy.Book.BookId = int.Parse((cbBookTitle.SelectedItem as ComboBoxItem).Value.ToString());
+
+                    copy.Location = new Location()
+                    {
+                        Shelf = (int)numShelve.Value,
+                        ShelfRow = (int)numRow.Value,
+                        ShelfCol = (int)numCol.Value
+                    };
+
+                    if (WebApiClient.AddCopy(copy))
+                    {
+                        MessageBox.Show("Copy has been added.");
+
+                        if (!this.DesignMode)
+                        {
+                            list = GetPagedListAsync();
+
+                            btnPrevious.Enabled = list.HasPreviousPage;
+                            btnNext.Enabled = list.HasNextPage;
+                            dgCopyLocation.DataSource = list.Select(o => new { Shelve = o.Shelf, Row = o.ShelfRow, Column = o.ShelfCol }).ToList();
+                            lblPageCount.Text = string.Format("Page {0}/{1}", pageNumber, list.PageCount);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("That location is not available. Please select a different location from the grid table.");
+                }
             }
         }
 
@@ -67,28 +136,6 @@ namespace SmartLibraryPortal
                 cbBookTitle.SelectedIndex = 0;
             }
         }
-
-        //This methods bind available shelves, columns, rows to combo boxes
-        //Deprecated for now.
-        //public void BindLocationCombos()
-        //{
-        //    List<Location> locations = WebApiClient.GetAvailableLocation();
-
-        //      foreach (var item in locations.Select(x => x.Shelf).Distinct())
-        //    {
-        //        cbShelve.Items.Add(item);  
-        //    }
-
-        //    foreach (var item in locations.Select(x => x.ShelfRow).Distinct())
-        //    {
-        //        cbRow.Items.Add(item);
-        //    }
-
-        //    foreach (var item in locations.Select(x => x.ShelfCol).Distinct())
-        //    {
-        //        cbColumn.Items.Add(item);
-        //    } 
-        //}
 
         private void cbShelve_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -159,5 +206,29 @@ namespace SmartLibraryPortal
         {
             this.Hide();
         }
+
+        private void dgCopyLocation_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            numCol.Value = decimal.Parse(dgCopyLocation.Rows[e.RowIndex].Cells["Column"].Value.ToString());
+            numRow.Value = decimal.Parse(dgCopyLocation.Rows[e.RowIndex].Cells["Row"].Value.ToString());
+            numShelve.Value = decimal.Parse(dgCopyLocation.Rows[e.RowIndex].Cells["Shelve"].Value.ToString());
+
+        }
+
+        private void txtRFID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+(e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

@@ -60,6 +60,7 @@ namespace SmartLibraryPortal.Operations
                     html = reader.ReadToEnd();
                     books = JsonConvert.DeserializeObject<List<Book>>(html);
                 }
+                books = CombineAvailableCopiesToBooks(books);
 
                 return books;
             }
@@ -67,6 +68,43 @@ namespace SmartLibraryPortal.Operations
             {
                 return null;
             }
+        }
+
+        public static List<Copy> GetAllCopies()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetCopies";
+            bool valid = false;
+            string html = string.Empty;
+            List<Copy> copies = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                copies = JsonConvert.DeserializeObject<List<Copy>>(html);
+            }
+
+            return copies;
+        }
+
+        public static List<Book> CombineAvailableCopiesToBooks(List<Book> bookList)
+        {
+            List<Copy> copies = WebApiClient.GetAllCopies();
+
+            foreach (var book in bookList)
+            {
+                book.Copies = copies.Where(x => x.Book.BookId == book.BookId && x.Status.Name.Equals("Available")).ToList();
+            }
+
+            return bookList;
         }
 
         public static List<UserLogin> GetUsers(string userType="all")
@@ -115,6 +153,56 @@ namespace SmartLibraryPortal.Operations
             }
 
             return reservations;
+        }
+
+        public static List<ElectronicFile> GetElectronicFiles()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetElectronicFiles";
+            string html = string.Empty;
+            List<ElectronicFile> eFiles = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                eFiles = JsonConvert.DeserializeObject<List<ElectronicFile>>(html);
+            }
+
+            return eFiles;
+        }
+
+
+
+        public static List<Transaction> GetTransactions()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetTransactions";
+            string html = string.Empty;
+            List<Transaction> transactions = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                transactions = JsonConvert.DeserializeObject<List<Transaction>>(html);
+            }
+
+            return transactions;
         }
 
         public static List<Category> GetCategories()
@@ -217,6 +305,31 @@ namespace SmartLibraryPortal.Operations
             return usereTypeList;
         }
 
+        public static List<ElectronicFileType> GetElectronicTypes()
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "GetElectronicTypes";
+            bool valid = false;
+            string html = string.Empty;
+            List<ElectronicFileType> eFileType = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                eFileType = JsonConvert.DeserializeObject<List<ElectronicFileType>>(html);
+            }
+
+            return eFileType;
+        }
+
         public static Book GetBookDetails(int bookId)
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
@@ -292,6 +405,32 @@ namespace SmartLibraryPortal.Operations
             return isSuccess;
         }
 
+        public static bool EFileNameAvailability(string bookTitle)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "EFileNameAvailability";
+            bool isSuccess = false;
+            string html = string.Empty;
+            Book book = null;
+
+            string url = urlWebConfig + "/" + controller + "/" + action + "?bookTitle=" + bookTitle;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+                isSuccess = bool.Parse(html);
+            }
+
+            return isSuccess;
+        }
+
+
         public static UserLogin AuthenticateStudentRFID(string rfid)
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
@@ -335,6 +474,43 @@ namespace SmartLibraryPortal.Operations
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
                 string json = JsonConvert.SerializeObject(book);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                result = result.ToString();
+                response = result;
+                isSuccess = bool.Parse(response);
+            }
+
+            return isSuccess;
+
+        }
+
+        public static bool AddElectronicFile(ElectronicFile efile)
+        {
+            string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
+            string controller = "values";
+            string action = "AddElectronicFile";
+            string html = string.Empty;
+            bool isSuccess = false;
+
+            string url = urlWebConfig + "/" + controller + "/" + action;
+            string response = string.Empty;
+            var httpWebRequest = (System.Net.HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(efile);
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -656,7 +832,7 @@ namespace SmartLibraryPortal.Operations
         {
             string urlWebConfig = ConfigurationSettings.AppSettings.Get("ApiURL").ToString();
             string controller = "values";
-            string action = "GetShelve";
+            string action = "GetAvailableLocation";
             string html = string.Empty;
             List<Location> locations = null;
 

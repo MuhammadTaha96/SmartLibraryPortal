@@ -38,6 +38,7 @@
             this.btnAddBook = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.gbBooks = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgBooks)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbBooks.SuspendLayout();
@@ -61,7 +62,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgBooks.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgBooks.RowTemplate.Height = 40;
-            this.dgBooks.Size = new System.Drawing.Size(820, 286);
+            this.dgBooks.Size = new System.Drawing.Size(820, 235);
             this.dgBooks.TabIndex = 1;
             this.dgBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgBooks_CellContentClick);
             // 
@@ -120,7 +121,7 @@
             this.btnAddBook.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAddBook.Location = new System.Drawing.Point(24, 19);
             this.btnAddBook.Name = "btnAddBook";
-            this.btnAddBook.Size = new System.Drawing.Size(110, 37);
+            this.btnAddBook.Size = new System.Drawing.Size(105, 37);
             this.btnAddBook.TabIndex = 5;
             this.btnAddBook.Text = "Add";
             this.btnAddBook.UseVisualStyleBackColor = false;
@@ -131,9 +132,9 @@
             this.button2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(171, 19);
+            this.button2.Location = new System.Drawing.Point(135, 19);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 37);
+            this.button2.Size = new System.Drawing.Size(102, 37);
             this.button2.TabIndex = 7;
             this.button2.Text = "Update or Delete";
             this.button2.UseVisualStyleBackColor = false;
@@ -141,15 +142,29 @@
             // 
             // gbBooks
             // 
+            this.gbBooks.Controls.Add(this.btnRefresh);
             this.gbBooks.Controls.Add(this.btnAddBook);
             this.gbBooks.Controls.Add(this.button2);
             this.gbBooks.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gbBooks.Location = new System.Drawing.Point(509, 20);
+            this.gbBooks.Location = new System.Drawing.Point(459, 20);
             this.gbBooks.Name = "gbBooks";
-            this.gbBooks.Size = new System.Drawing.Size(314, 68);
+            this.gbBooks.Size = new System.Drawing.Size(364, 68);
             this.gbBooks.TabIndex = 8;
             this.gbBooks.TabStop = false;
             this.gbBooks.Text = "Manage Books";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRefresh.Location = new System.Drawing.Point(243, 19);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(102, 37);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // bookControl
             // 
@@ -181,5 +196,6 @@
         private System.Windows.Forms.Button btnAddBook;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbBooks;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -96,6 +96,12 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="uc_ElectronicFiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_ElectronicFiles.Designer.cs">
+      <DependentUpon>uc_ElectronicFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListItem.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -123,6 +129,12 @@
     </Compile>
     <Compile Include="uc_Reservation.Designer.cs">
       <DependentUpon>uc_Reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_Transaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_Transaction.Designer.cs">
+      <DependentUpon>uc_Transaction.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateBook.cs">
       <SubType>Form</SubType>
@@ -157,6 +169,9 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uc_ElectronicFiles.resx">
+      <DependentUpon>uc_ElectronicFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="uc_Reservation.resx">
       <DependentUpon>uc_Reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_Transaction.resx">
+      <DependentUpon>uc_Transaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateBook.resx">
       <DependentUpon>UpdateBook.cs</DependentUpon>
