@@ -196,5 +196,19 @@ namespace SmartLibraryPortal
                 errorEfile.SetError(txtPath, "");
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+            if (!this.DesignMode)
+            {
+                list = GetPagedListAsync();
+
+                btnPrevious.Enabled = list.HasPreviousPage;
+                btnNext.Enabled = list.HasNextPage;
+                dgElectronicFiles.DataSource = list.Select(o => new { Name = o.FileName, Type = o.FileType.Name, Format = o.Path.Substring(o.Path.LastIndexOf('.') + 1) }).ToList();
+                lblPageCount.Text = string.Format("Page {0}/{1}", pageNumber, list.PageCount);
+            }
+        }
     }
 }

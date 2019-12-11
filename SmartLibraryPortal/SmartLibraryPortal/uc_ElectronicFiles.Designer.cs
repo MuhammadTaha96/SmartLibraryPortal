@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -99,11 +99,12 @@
             this.btnRefresh.TabIndex = 24;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dgElectronicFiles
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgElectronicFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgElectronicFiles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgElectronicFiles.BackgroundColor = System.Drawing.Color.LightYellow;
@@ -112,11 +113,11 @@
             this.dgElectronicFiles.GridColor = System.Drawing.Color.Black;
             this.dgElectronicFiles.Location = new System.Drawing.Point(343, 85);
             this.dgElectronicFiles.Name = "dgElectronicFiles";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightYellow;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightYellow;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgElectronicFiles.RowTemplate.Height = 40;
             this.dgElectronicFiles.Size = new System.Drawing.Size(486, 255);
             this.dgElectronicFiles.TabIndex = 23;
