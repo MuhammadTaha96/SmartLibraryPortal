@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -103,8 +103,8 @@
             // 
             // dgElectronicFiles
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgElectronicFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgElectronicFiles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgElectronicFiles.BackgroundColor = System.Drawing.Color.LightYellow;
@@ -113,11 +113,11 @@
             this.dgElectronicFiles.GridColor = System.Drawing.Color.Black;
             this.dgElectronicFiles.Location = new System.Drawing.Point(343, 85);
             this.dgElectronicFiles.Name = "dgElectronicFiles";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightYellow;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightYellow;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgElectronicFiles.RowTemplate.Height = 40;
             this.dgElectronicFiles.Size = new System.Drawing.Size(486, 255);
             this.dgElectronicFiles.TabIndex = 23;
@@ -145,7 +145,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 43);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Upload";
+            this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
