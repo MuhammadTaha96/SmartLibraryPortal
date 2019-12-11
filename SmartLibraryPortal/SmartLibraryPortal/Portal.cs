@@ -56,18 +56,18 @@ namespace SmartLibraryPortal
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnReservations = new System.Windows.Forms.Button();
             this.btnStudents = new System.Windows.Forms.Button();
             this.btnBooks = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.uc_Transaction1 = new SmartLibraryPortal.uc_Transaction();
             this.uctrl_CheckIn = new SmartLibraryPortal.CheckIn();
             this.uctrl_Books = new SmartLibraryPortal.bookControl();
             this.uctrl_Users = new SmartLibraryPortal.StudentUserControl();
             this.uctrl_Reservation = new SmartLibraryPortal.uc_Reservation();
             this.uctrl_CheckOut = new SmartLibraryPortal.CheckOut();
-            this.button4 = new System.Windows.Forms.Button();
             this.uc_ElectronicFiles1 = new SmartLibraryPortal.uc_ElectronicFiles();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,34 @@ namespace SmartLibraryPortal
             this.panel3.Size = new System.Drawing.Size(200, 566);
             this.panel3.TabIndex = 1;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Location = new System.Drawing.Point(0, 357);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(200, 54);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "ELECTRONIC FILES";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(0, 307);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(200, 54);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "TRANSACTION HISTORY";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // btnCheckIn
             // 
             this.btnCheckIn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -95,7 +123,7 @@ namespace SmartLibraryPortal
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(200, 54);
             this.btnCheckIn.TabIndex = 3;
-            this.btnCheckIn.Text = "CHECK IN";
+            this.btnCheckIn.Text = "CHECK IN / CHECK OUT";
             this.btnCheckIn.UseVisualStyleBackColor = false;
             this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
@@ -140,20 +168,6 @@ namespace SmartLibraryPortal
             this.btnBooks.Text = "BOOKS";
             this.btnBooks.UseVisualStyleBackColor = false;
             this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(0, 307);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 54);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "TRANSACTION HISTORY";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // uc_Transaction1
             // 
@@ -203,20 +217,6 @@ namespace SmartLibraryPortal
             this.uctrl_CheckOut.Name = "uctrl_CheckOut";
             this.uctrl_CheckOut.Size = new System.Drawing.Size(835, 435);
             this.uctrl_CheckOut.TabIndex = 3;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(0, 357);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 54);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "ELECTRONIC FILES";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // uc_ElectronicFiles1
             // 
