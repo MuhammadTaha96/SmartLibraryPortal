@@ -87,13 +87,15 @@
             // 
             // btnClear
             // 
+            this.btnClear.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Location = new System.Drawing.Point(479, 179);
             this.btnClear.Name = "btnClear";
             this.btnClear.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnClear.Size = new System.Drawing.Size(97, 34);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear ";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // CheckIn

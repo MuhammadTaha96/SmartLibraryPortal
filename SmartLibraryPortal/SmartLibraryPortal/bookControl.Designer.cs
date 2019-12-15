@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgBooks = new System.Windows.Forms.DataGridView();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -39,6 +39,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.gbBooks = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbSearchBy = new System.Windows.Forms.ComboBox();
+            this.cbSearchItems = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgBooks)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbBooks.SuspendLayout();
@@ -46,8 +49,8 @@
             // 
             // dgBooks
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.dgBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.dgBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgBooks.BackgroundColor = System.Drawing.Color.LightYellow;
@@ -56,11 +59,11 @@
             this.dgBooks.GridColor = System.Drawing.Color.Black;
             this.dgBooks.Location = new System.Drawing.Point(3, 94);
             this.dgBooks.Name = "dgBooks";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightYellow;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBooks.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightYellow;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBooks.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgBooks.RowTemplate.Height = 40;
             this.dgBooks.Size = new System.Drawing.Size(820, 235);
             this.dgBooks.TabIndex = 1;
@@ -166,12 +169,50 @@
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Search By";
+            // 
+            // cbSearchBy
+            // 
+            this.cbSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchBy.FormattingEnabled = true;
+            this.cbSearchBy.Items.AddRange(new object[] {
+            "All",
+            "Category",
+            "Publisher"});
+            this.cbSearchBy.Location = new System.Drawing.Point(66, 29);
+            this.cbSearchBy.Name = "cbSearchBy";
+            this.cbSearchBy.Size = new System.Drawing.Size(104, 21);
+            this.cbSearchBy.TabIndex = 10;
+            this.cbSearchBy.SelectedIndexChanged += new System.EventHandler(this.cbSearchBy_SelectedIndexChanged);
+            // 
+            // cbSearchItems
+            // 
+            this.cbSearchItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchItems.FormattingEnabled = true;
+            this.cbSearchItems.Items.AddRange(new object[] {
+            "All"});
+            this.cbSearchItems.Location = new System.Drawing.Point(189, 29);
+            this.cbSearchItems.Name = "cbSearchItems";
+            this.cbSearchItems.Size = new System.Drawing.Size(235, 21);
+            this.cbSearchItems.TabIndex = 11;
+            this.cbSearchItems.SelectedIndexChanged += new System.EventHandler(this.cbSearchItems_SelectedIndexChanged);
+            // 
             // bookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.cbSearchItems);
+            this.Controls.Add(this.cbSearchBy);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.gbBooks);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgBooks);
@@ -183,6 +224,7 @@
             this.panel1.PerformLayout();
             this.gbBooks.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -197,5 +239,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbBooks;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbSearchBy;
+        private System.Windows.Forms.ComboBox cbSearchItems;
     }
 }

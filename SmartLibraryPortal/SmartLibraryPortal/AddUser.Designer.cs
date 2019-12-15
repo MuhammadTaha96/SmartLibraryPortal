@@ -157,12 +157,14 @@
             // 
             // btnAddUser
             // 
+            this.btnAddUser.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddUser.Location = new System.Drawing.Point(257, 360);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(103, 36);
             this.btnAddUser.TabIndex = 12;
             this.btnAddUser.Text = "Add";
-            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.UseVisualStyleBackColor = false;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // txtEmail
@@ -188,12 +190,14 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(38, 360);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(103, 36);
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // AddUser

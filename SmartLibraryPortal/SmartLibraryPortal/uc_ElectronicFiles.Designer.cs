@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -103,8 +103,8 @@
             // 
             // dgElectronicFiles
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.dgElectronicFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgElectronicFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgElectronicFiles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgElectronicFiles.BackgroundColor = System.Drawing.Color.LightYellow;
@@ -113,11 +113,11 @@
             this.dgElectronicFiles.GridColor = System.Drawing.Color.Black;
             this.dgElectronicFiles.Location = new System.Drawing.Point(343, 85);
             this.dgElectronicFiles.Name = "dgElectronicFiles";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightYellow;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightYellow;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgElectronicFiles.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgElectronicFiles.RowTemplate.Height = 40;
             this.dgElectronicFiles.Size = new System.Drawing.Size(486, 255);
             this.dgElectronicFiles.TabIndex = 23;
@@ -141,22 +141,26 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(116, 194);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 43);
             this.button2.TabIndex = 7;
             this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(20, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "Upload";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtPath
