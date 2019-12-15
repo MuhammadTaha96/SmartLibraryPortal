@@ -15,12 +15,15 @@ namespace Utility
         {
            Program.CancleReservations();
             Program.OverDueNotification();
-}
+
+            Console.ReadLine();
+        }
 
         public static void CancleReservations()
         {
+            Console.WriteLine("----------Reservation Cancellation Utility Started: " + DateTime.Now + "----------");
             List<Reservation> resList = ApiClient.GetReservations();
-
+            
             if (resList != null)
             {
                 resList = resList.Where(x => x.Status.Name.Equals("Active")).ToList();
@@ -32,15 +35,19 @@ namespace Utility
                         if (res.EndDateTime.Date == DateTime.Now.Date)
                         {
                             ApiClient.CancleReservation(res.ReservationId, res.ReservedCopy.CopyId);
+                            Console.WriteLine(string.Format("ReservationID: {0} | End Date: {1} --> Cancelled ", res.ReservationId, res.EndDateTime.Date));
                         }
                     }
                 }
             }
 
+            Console.WriteLine("----------Reservation Cancellation Utility Ended: " + DateTime.Now + "----------");
+
         }
 
         public static void OverDueNotification()
         {
+            Console.WriteLine("----------OverDue Notification Utility Started: " + DateTime.Now + "----------");
             List<Transaction> tranList = ApiClient.GetTransactions();
             string smsContent = string.Empty;
            if(tranList != null)
@@ -60,6 +67,7 @@ namespace Utility
            }
            
            }
+           Console.WriteLine("----------OverDue Notification Utility Ended: " + DateTime.Now + "----------");
         }
 
 
